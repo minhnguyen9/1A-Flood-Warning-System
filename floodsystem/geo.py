@@ -21,6 +21,16 @@ def stations_by_distance(station, p):
 #Putting the desired value into a new list, along with the distance
     return sorted_by_key(distance_list, 2)
     
+def stations_within_radius(stations,centre, r):
+    
+    stationdistance =  stations_by_distance(stations, centre)
+#Using the stations_by_distance function to get the required values
+    stationwithin = [x[0] for x in stationdistance if x[2] <= r]
+#Only include the names of stations whose distance is less than r
+    
+    return sorted(stationwithin)
+
+    
 
 
 
