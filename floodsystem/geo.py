@@ -7,7 +7,7 @@ from haversine import haversine
 from floodsystem.utils import sorted_by_key
 from floodsystem.stationdata import build_station_list
 
-#For Task1B
+# For Task1B
 def stations_by_distance(station, p):
     
     distance_list = []
@@ -27,7 +27,19 @@ def stations_by_distance(station, p):
 
 stations = build_station_list()
 
-#For Task1D
+
+# For Task1C
+def stations_within_radius(stations,centre, r):
+    
+    stationdistance =  stations_by_distance(stations, centre)
+#Using the stations_by_distance function to get the required values
+    stationwithin = [x[0] for x in stationdistance if x[2] <= r]
+#Only include the names of stations whose distance is less than r
+    
+    return sorted(stationwithin)
+
+
+# For Task1D
 def rivers_with_station(stations): 
     
     #create empty set and list
@@ -43,6 +55,7 @@ def rivers_with_station(stations):
         river_list.append(river)
     river_list.sort()
     return river_list
+
 
 def stations_by_river(stations):
     
@@ -60,15 +73,6 @@ def stations_by_river(stations):
                 pass
         stations_by_river_dict[river].sort()
     return stations_by_river_dict
-
-def stations_within_radius(stations,centre, r):
-    
-    stationdistance =  stations_by_distance(stations, centre)
-#Using the stations_by_distance function to get the required values
-    stationwithin = [x[0] for x in stationdistance if x[2] <= r]
-#Only include the names of stations whose distance is less than r
-    
-    return sorted(stationwithin)
 
 
 
@@ -110,5 +114,5 @@ def rivers_by_station_number(stations, N):
             N += 1
         else:
             break
-    list_of_tuples = list_of_lists[:N]
+    list_of_tuples = list_of_tuples[:N]
     return list_of_tuples
