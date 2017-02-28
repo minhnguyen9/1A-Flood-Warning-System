@@ -37,14 +37,18 @@ class MonitoringStation:
         return d
 
     def typical_range_consistent(self):
+        #Check if there is a typical range and if high > low
         if self.typical_range == None or self.typical_range[1] - self.typical_range[0] < 0:
             return False
         else:
             return True
 
+
 def typical_range_consistent(stations):
+    #Create empty list to fill with inconsistent station
     inconsistent_stations = []
     for item in stations:
+        #Add to list if station is not consistent
         if item.typical_range_consistent() == False:
             inconsistent_stations.append(item.name)
     return sorted(inconsistent_stations)
