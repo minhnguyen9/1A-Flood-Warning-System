@@ -63,7 +63,7 @@ def test_stations_by_river():
     
     assert type(d) == dict
                
-    for name, station_list in dict.items():
+    for name, station_list in d.items():
         assert type(name) == str
         assert type(station_list) == list
         for item in station_list:
@@ -89,5 +89,5 @@ def test_rivers_by_station_number():
         list_of_lists = []
         # Convert list of tuples to list of lists
         list_of_lists.append(list(t))
-        for n in range(len(list_of_lists - 1)):
+        for n in range(len(list_of_lists) - 1):
             assert list_of_lists[n][1] <= list_of_lists[n+1][1]
